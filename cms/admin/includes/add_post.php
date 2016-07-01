@@ -14,6 +14,7 @@ if(isset($_POST['create_post'])){
     $post_comment_count = 4;
     $post_date = date('d-m-y');
     
+        move_uploaded_file($post_image_temp,"../images/$post_image");
 
 }
 
