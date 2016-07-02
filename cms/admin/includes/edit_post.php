@@ -43,11 +43,9 @@
                 $cat_id = $row['cat_id'];
                 $cat_title = $row['cat_title']; 
                
-               echo "<option value=''>{$cat_title}</option>";
+               echo "<option value='{$cat_id}'>{$cat_title}</option>";
            }  
-            
-
-           
+       
            ?>
        </select>
     </div>
@@ -56,6 +54,10 @@
         <input value="<?php echo $post_author; ?>" type="text" class="form-control" name="post_author">
     </div>
      <div class="form-group">
+      
+       <label for="image">Post Image</label>
+        <input type="file"  name="image">
+    
        <img width=175 height=75 src="../images/<?php echo $post_image;?>" alt="">
     </div>
      <div class="form-group">
@@ -74,7 +76,7 @@
     <br/>
      <div class="form-group">
       
-        <input type="submit" class="btn btn-primary" name="create_post" value="Publish Post">
+        <input type="submit" class="btn btn-primary" name="create_post" value="Update Post">
     </div>
     
     
