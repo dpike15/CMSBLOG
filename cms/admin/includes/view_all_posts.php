@@ -39,8 +39,24 @@
                             <td>{$post_tags}</td>
                             <td>{$post_comment_count}</td>
                             <td>{$post_date}</td>
+                            <td><a href='posts.php?source=edit_post&p_id={$post_id}'>EDIT</a></td>
+                            <td><a href='posts.php?delete={$post_id}'>DELETE</a></td>
                         </tr>";
                     }
+                     ?>
+                     
+                     
+                     <?php
+                     
+                     if(isset($_GET['delete'])){
+                         $post_id = $_GET['delete'];
+                         
+                         $query = "DELETE FROM posts WHERE post_id={$post_id}";
+                         $delete_Query = mysqli_query($connection,$query);
+                         
+                         confirm($delete_Query);
+                         header("Location: posts.php");
+                     }
                      
                      ?>
 
