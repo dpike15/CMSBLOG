@@ -1,4 +1,5 @@
-<?php include "includes/admin_header.php"; ?>
+<?php include "includes/admin_header.php"; 
+    ?>
 
 <div id="wrapper">
         <!-- Navigation -->
