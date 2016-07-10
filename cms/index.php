@@ -14,9 +14,10 @@
                 
                 <?php
                      
-                    $query = "SELECT * FROM posts";
+                    $query = "SELECT * FROM posts WHERE post_status = 'published'";
                     $posts = mysqli_query($connection,$query);
-                    
+                   
+                    if(mysqli_num_rows($posts) != 0){
                     while($row = mysqli_fetch_assoc($posts)){
                         $post_id = $row['post_id'];
                         $post_title = $row['post_title'];
@@ -25,12 +26,11 @@
                         $post_image = $row['post_image'];
                         $post_content = substr($row['post_content'],0,150);
                         
+                        
+                       
                         ?>
                        
-                <h1 class="page-header">
-                    Page Heading
-                    <small>Secondary Text</small>
-                </h1>
+               
 
                 <!-- First Blog Post -->
                 <h2>
@@ -51,7 +51,9 @@
                 <hr>
 
                        
-                <?php  } ?>
+                <?php  } }else{
+                        echo "<h1 class='page-header text-center'>NO PUBLISHED POSTS YET</h1>";
+                    } ?>
 
                 
             </div>
