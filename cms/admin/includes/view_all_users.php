@@ -7,7 +7,7 @@
                          <th>Last Name</th>
                          <th>E-mail</th>
                          <th>Role</th>
-                         <th>Date</th>
+                         
                      </tr>
                  </thead>
                  <tbody>
@@ -42,10 +42,10 @@
                         
                            
                             
-                            echo "<td><a href='comments.php?approve='>Approve</a></td>
-                            <td><a href='comments.php?unapprove='>Unapprove</a></td>
-                            <td><a href='comments.php?source=edit_post&p_id='>EDIT</a></td>
-                            <td><a href='comments.php?delete='>DELETE</a></td>
+                            echo "<td><a href='users.php?change_to_admin={$user_id}'>Admin</a></td>
+                            <td><a href='users.php?change_to_sub={$user_id}'>Subscriber</a></td>
+                            <td><a href='users.php?source=edit_user&p_id={$user_id}'>EDIT</a></td>
+                            <td><a href='users.php?delete={$user_id}'>DELETE</a></td>
                         </tr>";
                     }
                      ?>
@@ -54,39 +54,36 @@
                      <?php
                      //Delete
                      if(isset($_GET['delete'])){
-                         $comments_id = $_GET['delete'];
+                         $user_id = $_GET['delete'];
                          
-                         $query = "DELETE FROM comments WHERE comment_id={$comments_id}";
+                         $query = "DELETE FROM users WHERE user_id={$user_id}";
                          $delete_Query = mysqli_query($connection,$query);
                          
                          confirm($delete_Query);
-                         
-                        $query = "UPDATE posts SET post_comment_count=post_comment_count - 1 WHERE post_id=$comment_post_id";
-                        $comment_count_Query = mysqli_query($connection,$query);
-                        
-                         header("Location: comments.php");
+                       
+                         header("Location: users.php");
                      }
                      
                      //Unapprove
-                      if(isset($_GET['unapprove'])){
-                         $comments_id = $_GET['unapprove'];
+                      if(isset($_GET['change_to_sub'])){
+                         $comments_id = $_GET['change_to_sub'];
                          
-                         $query = "UPDATE comments SET comment_status='unapproved' WHERE comment_id = $comments_id";
-                         $unapprove_Query = mysqli_query($connection,$query);
+                         $query = "UPDATE users SET user_role='Subscriber' WHERE user_id = $user_id";
+                         $sub_Query = mysqli_query($connection,$query);
                          
-                         confirm($unapprove_Query);
-                         header("Location: comments.php");
+                         confirm($sub_Query);
+                         header("Location: users.php");
                      }
                      
                      //Approve
-                       if(isset($_GET['approve'])){
-                         $comments_id = $_GET['approve'];
+                       if(isset($_GET['change_to_admin'])){
+                         $user_id = $_GET['change_to_admin'];
                          
-                         $query = "UPDATE comments SET comment_status='approved' WHERE comment_id = $comments_id";
-                         $approve_Query = mysqli_query($connection,$query);
+                         $query = "UPDATE users SET user_role='Admin' WHERE user_id = $user_id";
+                         $admin_Query = mysqli_query($connection,$query);
                          
-                         confirm($approve_Query);
-                         header("Location: comments.php");
+                         confirm($admin_Query);
+                         header("Location: users.php");
                      }
                      ?>
 
