@@ -2,67 +2,50 @@
                  <thead>
                      <tr>
                          <th>Id</th>
-                         <th>Author</th>
-                         <th>Comment</th>
-                         <th>Email</th>
-                         <th>Status</th>
+                         <th>username</th>
+                         <th>First Name</th>
+                         <th>Last Name</th>
+                         <th>E-mail</th>
+                         <th>Role</th>
                          <th>Date</th>
-                         <th>In Response To</th>
-                         <th>Approve</th>
-                         <th>Unapprove</th>
-                        
                      </tr>
                  </thead>
                  <tbody>
                    <?php
-                     $query = "SELECT * FROM comments ORDER BY comment_date DESC";
+                     $query = "SELECT * FROM users";
 
-                    $posts = mysqli_query($connection,$query);
+                    $select_users = mysqli_query($connection,$query);
 
-                    while($row = mysqli_fetch_assoc($posts)){
-                        $comment_id = $row['comment_id'];
-                        $comment_post_id = $row['comment_post_id'];
-                        $comment_author = $row['comment_author'];
-                        $comment_email = $row['comment_email'];
-                        $comment_content = $row['comment_content'];
-                        $comment_status = $row['comment_status'];
-                        $comment_date = $row['comment_date'];
+                    while($row = mysqli_fetch_assoc($select_users)){
+                        $user_id = $row['user_id'];
+                        $username = $row['username'];
+                        $password = $row['password'];
+                        $user_role = $row['user_role'];
+                        $first_name = $row['first_name'];
+                        $last_name = $row['last_name'];
+                        $user_email = $row['user_email'];
+                        $user_image = $row['user_image'];
                      
                         echo " 
                         <tr>
-                            <td>$comment_id</td>
-                            <td>$comment_author</td>
-                            <td>$comment_content</td>";
+                            <td>$user_id</td>
+                            <td>$username</td>
+                            <td>$first_name</td>";
                             
-                            /*$query = "SELECT * FROM categories WHERE cat_id = {$post_category_id}";
-                            $edit_Query = mysqli_query($connection,$query);
-                                                    
-                            while($row = mysqli_fetch_assoc($edit_Query)){
-                                $cat_id=$row['cat_id'];
-                                $cat_title = $row['cat_title'];
-                                    */
-
-
-                            echo "<td>{$comment_email}</td>
-                            <td>{$comment_status}</td>
-                            <td>{$comment_date }</td>";
-                            
-                            $query ="SELECT * FROM posts WHERE post_id=$comment_post_id";
-                            $result = mysqli_query($connection,$query);
                         
-                            while($row = mysqli_fetch_assoc($result)){
-                                $post_id = $row['post_id'];
-                                $post_title = $row['post_title'];
-                                
-                                echo "<td><a href='../post.php?p_id=$post_id'>$post_title</a></td>";
-                            }
+
+                            echo "<td>$last_name</td>
+                            <td>$user_email</td>
+                            <td>$user_role</td>";
+                            
+                      
                         
                            
                             
-                            echo "<td><a href='comments.php?approve={$comment_id}'>Approve</a></td>
-                            <td><a href='comments.php?unapprove={$comment_id}'>Unapprove</a></td>
-                            <td><a href='comments.php?source=edit_post&p_id={$comment_id}'>EDIT</a></td>
-                            <td><a href='comments.php?delete={$comment_id}'>DELETE</a></td>
+                            echo "<td><a href='comments.php?approve='>Approve</a></td>
+                            <td><a href='comments.php?unapprove='>Unapprove</a></td>
+                            <td><a href='comments.php?source=edit_post&p_id='>EDIT</a></td>
+                            <td><a href='comments.php?delete='>DELETE</a></td>
                         </tr>";
                     }
                      ?>
