@@ -13,8 +13,9 @@
                 <div class="row">
                     <div class="col-lg-12">
                         <h1 class="page-header">
-                            Admin Area
-                            <small>Author</small>
+                            Welcome to Admin Area
+                            
+                            <small><?php echo $_SESSION['username']; ?></small>
                         </h1
                             
                         
