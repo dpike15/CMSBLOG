@@ -27,7 +27,8 @@ if(isset($_POST['create_user'])){
     $create_Query = mysqli_query($connection, $query);
     
     confirm($create_Query);
-    header("Location: users.php");
+    echo "User Created:". " " . "<a href = 'users.php'>View Users</a>" ;
+    
 }
 
 ?>
