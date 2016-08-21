@@ -107,10 +107,24 @@
        <label for="post_tags">Post Tags</label>
         <input value="<?php echo $post_tags; ?>" type="text" class="form-control" name="post_tags">
     </div>
-     <div class="form-group">
+     
+      <div class="form-group">
        <label for="post_status">Post Status</label>
-        <input value="<?php echo $post_status; ?>" type="text" class="form-control" name="post_status">
-    </div>
+      
+        <select name="post_status" class="form-control">
+            <option value=""><?php echo $post_status; ?></option>
+            <?php
+            if($post_status == 'published'){
+                echo "<option value='draft'>draft</option>";
+            }else{
+                echo "<option value='published'>published</option>";
+            }
+            
+            ?>
+        </select>
+        
+        <!--  <input value="<?php echo $post_status; ?>" type="text" class="form-control" name="post_status"> -->
+         </div> 
     <br/>
      <div class="form-group">
       
