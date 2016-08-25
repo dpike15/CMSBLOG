@@ -54,7 +54,8 @@
                    $update_Query = mysqli_query($connection,$query);
 
                     confirm($update_Query);
-                    header("Location: ./posts.php");
+                    echo "<p class='bg-success'>Post Updated. <a href='../post.php?p_id={$post_id}'>View Post</a></p>";
+                    //header("Location: ./posts.php");
             }
          }
 ?>

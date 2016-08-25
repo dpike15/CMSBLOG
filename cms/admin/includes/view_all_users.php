@@ -66,7 +66,7 @@
                      
                      //Unapprove
                       if(isset($_GET['change_to_sub'])){
-                         $comments_id = $_GET['change_to_sub'];
+                         $user_id = $_GET['change_to_sub'];
                          
                          $query = "UPDATE users SET user_role='Subscriber' WHERE user_id = $user_id";
                          $sub_Query = mysqli_query($connection,$query);

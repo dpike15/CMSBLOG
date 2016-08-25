@@ -1,4 +1,8 @@
-<?php include "db.php"; ?>
+<?php include "db.php"; 
+
+?>
+
+<?php session_start(); ?>
 
 
 <!DOCTYPE html>
